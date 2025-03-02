@@ -9,11 +9,11 @@ namespace Hada
         public string Nombre { get; private set; }
         public int NumDanyos { get; private set; }
 
-        // Eventos para manejar cuando un barco es tocado o hundido
+        
         public event EventHandler<TocadoArgs> EventoTocado;
         public event EventHandler<HundidoArgs> EventoHundido;
 
-        // Constructor de la clase
+       
         public Barco(string nombre, int longitud, char orientacion, Coordenada coordenadaInicio)
         {
             if (longitud <= 0 || longitud > 9)
@@ -26,7 +26,7 @@ namespace Hada
             NumDanyos = 0;
             CoordenadasBarco = new Dictionary<Coordenada, string>();
 
-            // Inicialización de coordenadas según la orientación
+         
             for (int i = 0; i < longitud; i++)
             {
                 int fila = coordenadaInicio.Fila;
@@ -42,12 +42,12 @@ namespace Hada
             }
         }
 
-        // Método para recibir un disparo en una coordenada
+        
         public void Disparo(Coordenada c)
         {
             if (CoordenadasBarco.ContainsKey(c) && !CoordenadasBarco[c].EndsWith("_T"))
             {
-                CoordenadasBarco[c] += "_T"; // Marcar como tocado
+                CoordenadasBarco[c] += "_T"; 
                 NumDanyos++;
                 EventoTocado?.Invoke(this, new TocadoArgs(Nombre, c));
 
@@ -58,7 +58,7 @@ namespace Hada
             }
         }
 
-        // Método para verificar si el barco está hundido
+        
         public bool Hundido()
         {
             foreach (var etiqueta in CoordenadasBarco.Values)
@@ -69,7 +69,7 @@ namespace Hada
             return true;
         }
 
-        // Método ToString para mostrar información del barco
+        
         public override string ToString()
         {
             string estado = Hundido() ? "Hundido" : "A flote";
@@ -78,7 +78,7 @@ namespace Hada
         }
     }
 
-    // Clases para manejar los argumentos de los eventos
+    
     public class TocadoArgs : EventArgs
     {
         public string Nombre { get; }
