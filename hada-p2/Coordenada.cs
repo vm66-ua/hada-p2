@@ -40,21 +40,21 @@ namespace Hada
             }
         }
 
-        // Constructor por defecto
+        
         public Coordenada()
         {
             Fila = 0;
             Columna = 0;
         }
 
-        // Constructor con valores enteros
+        
         public Coordenada(int fila, int columna)
         {
             Fila = fila;
             Columna = columna;
         }
 
-        // Constructor con valores en formato string
+        
         public Coordenada(string fila, string columna)
         {
             if (!int.TryParse(fila, out int f) || !int.TryParse(columna, out int c))
