@@ -19,7 +19,7 @@ namespace Hada
             {
                 if (value < 0 || value > 9)
                 {
-                    throw new ArgumentOutOfRangeException("Fila debe estar entre 0 y 9");
+                    throw new ArgumentOutOfRangeException("Fila debe estar entre 0 y 9.");
                 }
 
                 fila = value;
@@ -33,7 +33,7 @@ namespace Hada
             {
                 if (value < 0 || value > 9)
                 {
-                    throw new ArgumentOutOfRangeException("Columna debe estar entre 0 y 9");
+                    throw new ArgumentOutOfRangeException("Columna debe estar entre 0 y 9.");
                 }
 
                 columna = value;
@@ -57,15 +57,49 @@ namespace Hada
         
         public Coordenada(string fila, string columna)
         {
-            if (!int.TryParse(fila, out int f) || !int.TryParse(columna, out int c))
+            try
             {
-                throw new ArgumentException("Los valores de fila y columna deben ser números enteros");
+                int filaConvertida = Convert.ToInt32(fila);
+                int columnaConvertida= Convert.ToInt32(columna);
+                Fila= filaConvertida;
+                Columna= columnaConvertida;
+            }
+            catch (Exception)
+            {
+                throw new ArgumentException("Los argumentos deben ser números enteros.");
             }
 
-
-            Fila = f;
-            Columna = c;
+            
         }
+
+        public Coordenada(Coordenada otra)
+        {
+            Fila= otra.Fila;
+            Columna= otra.Columna;
+        }
+
+        public override string ToString()
+        {
+            return "(" + Fila + "," + Columna + ")";
+        }
+
+        public override int GetHashCode()
+        {
+            return Fila.GetHashCode() ^ Columna.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Coordenada)
+            {
+                Coordenada otra = (Coordenada)obj;
+                return Fila == otra.Fila && Columna == otra.Columna;
+            }
+
+            return false;
+        }
+
+
     }
 }
 
