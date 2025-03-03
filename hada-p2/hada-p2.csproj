@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Include="Barco.cs" />
     <Compile Include="Coordenada.cs" />
+    <Compile Include="Eventos.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
