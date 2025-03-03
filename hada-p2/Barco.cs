@@ -16,88 +16,150 @@ namespace Hada
        
         public Barco(string nombre, int longitud, char orientacion, Coordenada coordenadaInicio)
         {
-            if (longitud <= 0 || longitud > 9)
-                throw new ArgumentOutOfRangeException("La longitud del barco debe estar entre 1 y 9");
-
-            if (orientacion != 'h' && orientacion != 'v')
-                throw new ArgumentException("La orientación debe ser 'h' (horizontal) o 'v' (vertical)");
-
             Nombre = nombre;
             NumDanyos = 0;
             CoordenadasBarco = new Dictionary<Coordenada, string>();
 
-         
             for (int i = 0; i < longitud; i++)
             {
-                int fila = coordenadaInicio.Fila;
-                int columna = coordenadaInicio.Columna;
+                int fila, columna;
 
                 if (orientacion == 'h')
-                    columna += i;
+                {
+                    fila = coordenadaInicio.Fila;
+                    columna = coordenadaInicio.Columna + i;
+                }
                 else
-                    fila += i;
+                {
+                    fila = coordenadaInicio.Fila + i;
+                    columna = coordenadaInicio.Columna;
+                }
 
-                Coordenada nuevaCoordenada = new Coordenada(fila, columna);
-                CoordenadasBarco[nuevaCoordenada] = Nombre;
+                CoordenadasBarco.Add(new Coordenada(fila, columna), Nombre);
+
             }
         }
 
         
         public void Disparo(Coordenada c)
         {
-            if (CoordenadasBarco.ContainsKey(c) && !CoordenadasBarco[c].EndsWith("_T"))
-            {
-                CoordenadasBarco[c] += "_T"; 
-                NumDanyos++;
-                EventoTocado?.Invoke(this, new TocadoArgs(Nombre, c));
+            int total = CoordenadasBarco.Count;
+            Coordenada[] claves = new Coordenada[total];
+            string[] valores = new string[total];
+            int i = 0;
+            int j = 0;
 
+            while(i < total)
+            {
+                string valor = "";
+                Coordenada clave = null;
+                int contador = 0;
+
+                for (var elemento = new List<Coordenada>(CoordenadasBarco.Keys); contador < total; contador++)
+                {
+                    if (contador == i)
+                    {
+                        clave = elemento[contador];
+                        valor = CoordenadasBarco[clave];
+                        break;
+                    }
+
+                }
+                claves[i] = clave;
+                valores[i] = valor;
+                i++;
+            }
+
+            int encontrado = -1;
+            for(j=0; j<total; j++) 
+            {
+                if (claves[j].Equals(c))
+                {
+                    encontrado = j;
+                    break;
+                }
+             }
+
+            if(encontrado == -1)
+            {
+                Console.WriteLine("El disparo en " + c.ToString() + " no impactó en ningún barco. ");
+                return;
+            }
+
+            if (valores[encontrado] == Nombre)
+            {
+                CoordenadasBarco[claves[encontrado]] = Nombre + "_T";
+                NumDanyos++;
+
+                if (EventoTocado != null)
+                {
+                    EventoTocado(this, new TocadoArgs(Nombre, c));
+                }
+                
                 if (Hundido())
                 {
-                    EventoHundido?.Invoke(this, new HundidoArgs(Nombre));
+                    if (EventoHundido != null)
+                    {
+                        EventoHundido(this, new HundidoArgs(Nombre));
+                    }
                 }
             }
+
+
         }
 
         
         public bool Hundido()
         {
-            foreach (var etiqueta in CoordenadasBarco.Values)
+            int total = CoordenadasBarco.Count;
+            Coordenada[] claves = new Coordenada[total];
+            string[] valores = new string[total];
+
+            int i = 0;
+            int j = 0;
+
+            while(i < total)
             {
-                if (!etiqueta.EndsWith("_T"))
-                    return false;
+                string valor = "";
+                Coordenada clave = null;
+                int contador = 0;
+
+                for (var elemento = new List<Coordenada>(CoordenadasBarco.Keys); contador < total; contador++)
+                {
+                    if (contador == i)
+                    {
+                        clave = elemento[contador];
+                        valor = CoordenadasBarco[clave];
+                        break;
+                    }
+                }
+
+                claves[i] = clave;
+                valores[i] = valor;
+                i++;
             }
+              
+            for(j=0; j < total; j++)
+            {
+                if (valores[j] == Nombre)
+                {
+                    return false;
+                }
+            }
+
             return true;
+
         }
 
         
         public override string ToString()
         {
-            string estado = Hundido() ? "Hundido" : "A flote";
-            string coordenadas = string.Join(", ", CoordenadasBarco);
-            return $"Barco: {Nombre}, Daños: {NumDanyos}, Estado: {estado}, Coordenadas: [{coordenadas}]";
+            string resultado = "Barco: " + Nombre + " - Daños: " + NumDanyos + " - Estado:";
+            resultado += Hundido() ? "HUNDIDO\n" : "A FLOTE\n";
+            return resultado;
         }
     }
 
-    
-    public class TocadoArgs : EventArgs
-    {
-        public string Nombre { get; }
-        public Coordenada CoordenadaImpacto { get; }
 
-        public TocadoArgs(string nombre, Coordenada coordenadaImpacto)
-        {
-            Nombre = nombre;
-            CoordenadaImpacto = coordenadaImpacto;
-        }
-    }
-
-    public class HundidoArgs : EventArgs
-    {
-        public string Nombre { get; }
-
-        public HundidoArgs(string nombre)
-        {
-            Nombre = nombre;
-        }
-    }
+   
 }
