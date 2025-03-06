@@ -32,29 +32,31 @@ namespace Hada
                 string c = "";
 
             bool acaba = false;
+            while (!acaba)
+            {
                 do
                 {
                     Console.WriteLine("Introduzca una coordenada (formato fila, columna). Introduzca 'S' para salir.");
                     c = Console.ReadLine();
-                    if(c == "S")
+                    if (c == "S")
+                    {
+                        acaba = true;
+                        
+                    }
+                   
+
+
+                } while (!acaba && c.Contains(',') && c.Length != 3 && c[0] - '0' >= 0 && c[0] - '0' <= 8 && c[2] - '0' >= 0 && c[2] - '0' <= 8);
+                if (!acaba)
                 {
-                    acaba = true;
-                }
-                
-                
-                } while (!acaba && (c.Length != 3 && c[0] >= '0' && c[0] <= '8' && c[1] == ',' && c[2] >= '0' && c[2] <= '8'));
-                if(!acaba){
                     t.Disparar(new Coordenada(c[0] - '0', c[2] - '0'));
-                t.DibujarTablero();
                 }
-                else
-                {
                 t.DibujarTablero();
-                    Console.WriteLine("PARTIDA FINALIZADA");
-                }
+            }
+            Console.WriteLine("FIN DE LA PARTIDA");
 
 
-                
+
             //}
 
             /*catch

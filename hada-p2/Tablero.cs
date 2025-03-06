@@ -61,9 +61,9 @@ namespace Hada
             }
             for(int i = 0; i < barcos.Count; i++)
             {
-                foreach (object cor in barcos[i].CoordenadasBarco)
+                foreach (var cor in barcos[i].CoordenadasBarco)
                 {
-                    casillasTablero[(Coordenada)cor] = barcos[i].Nombre;
+                    casillasTablero[cor.Key] = barcos[i].Nombre;
                 }
             }
         }
