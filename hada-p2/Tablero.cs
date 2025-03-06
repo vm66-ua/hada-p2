@@ -15,12 +15,12 @@ namespace Hada
             get { return _tamTablero; }
             set
             {
-                if (TamTablero < 4 || TamTablero > 9)
+                if (value < 4 || value > 9)
                 {
-                    throw new ArgumentOutOfRangeException($"{nameof(_tamTablero)} must be between 4 and 9.");
+                    throw new ArgumentOutOfRangeException($"The size of the board must be between 4 and 9.");
                     // no cumple las necesidades de tamaño por lo que se pone en el tam máximo
                 }
-                _tamTablero = TamTablero;
+                _tamTablero = value;
             }
         }
         private List<Coordenada> coordenadasDisparadas;
@@ -28,8 +28,8 @@ namespace Hada
         private List<Barco> barcos;
         private List<Barco> barcosEliminados;
         private Dictionary<Coordenada, string> casillasTablero;
-        public event EventHandler<TocadoArgs> EventoTocado;
-        public event EventHandler<HundidoArgs> EventoHundido;
+        //public event EventHandler<TocadoArgs> EventoTocado;
+        //public event EventHandler<HundidoArgs> EventoHundido;
         public event EventHandler<EventArgs> EventoFinPartida;
 
         public Tablero(int tamTablero, List<Barco> barcos)
@@ -43,8 +43,11 @@ namespace Hada
             for (int i = 0; i < barcos.Count; i++)
             {
                 this.barcos.Add(barcos[i]);
+                barcos[i].EventoTocado += cuandoEventoTocado;
+                barcos[i].EventoHundido += cuandoEventoHundido;
 
             }
+            inicializaCasillasTablero();
         }
 
         private void inicializaCasillasTablero()
@@ -53,58 +56,21 @@ namespace Hada
             {
                 for(int j = 0; j < TamTablero; j++)
                 {
-                    for(int n = 0; n < barcos.Count; n++)
-                    {
-
-                    }
+                    casillasTablero.Add(new Coordenada(i, j), "AGUA");
                 }
             }
-            /*
-            for (int i = 0; i < TamTablero; i++)
+            for(int i = 0; i < barcos.Count; i++)
             {
-                for (int j = 0; j < TamTablero; j++)
+                foreach (object cor in barcos[i].CoordenadasBarco)
                 {
-                    bool encontrado = false;
-                    for (int bar = 0; bar < barcos.Count && !encontrado; j++)
-                    {
-                        int tam = barcos[bar].CoordenadasBarco.Count;
-                        //Posicion p = barcos[bar].posicion;
-                        int n = 0;
-                        int filas = 0;
-                        int columnas = 0;
-                        while (n < tam)
-                        {
-
-                            if (barcos[bar].CoordenadasBarco.Contains(new Coordenada(i, j))) 
-                            {
-                                encontrado = true;
-                                casillasTablero.Add(new Coordenada(barcos[bar].Fila + filas, barcos[bar].Columna + columnas), barcos[i].nombre);
-
-                            }
-                            if (barcos[i].orientacion = 'h')
-                            {
-                                columnas++;
-                            }
-                            else
-                            {
-                                filas += TamTablero;
-                            }
-
-                            tam--;
-                        }
-                    }
-                    if (!encontrado)
-                    {
-                        casillasTablero.Add(new Coordenada(i, j), "AGUA");
-                    }
+                    casillasTablero[(Coordenada)cor] = barcos[i].Nombre;
                 }
-
-            }*/
+            }
         }
 
         public void Disparar(Coordenada c)
         {
-            if (c.Fila > TamTablero || c.Columna > TamTablero)
+            if (c.Fila < 0 || c.Fila > TamTablero || c.Columna < 0 || c.Columna > TamTablero)
             {
                 Console.WriteLine($"La coordenada ({c.Fila}, {c.Columna}) está fuera de las dimensiones del tablero.");
             }
@@ -122,7 +88,7 @@ namespace Hada
                 if (!ya)
                 {
                     //bool encontrado = false;
-                    for (int bar = 0; bar < barcos.Count; j++)
+                    for (int bar = 0; bar < barcos.Count; bar++)
                     {
                         /* int tam = barcos[bar].longitud;
                          Posicion p = barcos[bar].posicion;
@@ -162,15 +128,15 @@ namespace Hada
         public string DibujarTablero()
         {
             string res = "";
-            res += "CASILLAS TABLERO" + '\n';
-            res += "--------";
+            res += "CASILLAS TABLERO" + Environment.NewLine;
+            res += "--------" + Environment.NewLine;
             for (int i = 0; i < TamTablero; i++)
             {
                 for (int j = 0; j < TamTablero; j++)
                 {
                     res += "[" + casillasTablero[new Coordenada(i, j)] + "]";
                 }
-                res += '\n';
+                res += Environment.NewLine;
             }
             return res;
         }
@@ -181,24 +147,40 @@ namespace Hada
 
             for (int n = 0; n < barcos.Count; n++)
             {
-                res += barcos[n] + '\n';
+                res += barcos[n].ToString() + Environment.NewLine;
             }
             res += "Coordenadas disparadas: ";
             for (int n = 0; n < coordenadasDisparadas.Count; n++)
             {
-                res += ToString(coordenadasDisparadas[n]) + " ";
+                res += coordenadasDisparadas[n].ToString() + " ";
             }
             res += '\n';
             res += "Coordenadas tocadas: ";
             for (int n = 0; n < coordenadasTocadas.Count; n++)
             {
-                res += ToString(coordenadasTocadas[n]) + " ";
+                res += coordenadasTocadas[n].ToString() + " ";
             }
-            res += '\n';
+            res += Environment.NewLine;
             res += DibujarTablero();
             return res;
 
         }
 
+        private void cuandoEventoTocado(object bar, TocadoArgs e)
+        {
+            coordenadasTocadas.Add(e.CoordenadaImpacto);
+            Console.WriteLine($"TABLERO: Barco [" + e.Nombre + "] tocado en Coordenada: [" + e.CoordenadaImpacto + "]");
+            casillasTablero[e.CoordenadaImpacto] = $"{e.Nombre}_T";
+        }
+
+        private void cuandoEventoHundido(object bar, HundidoArgs e)
+        {
+            barcosEliminados.Add((Barco)bar);
+            Console.WriteLine($"TABLERO: Barco [" + e.Nombre + "] hundido!!");
+            if(barcosEliminados.Count == barcos.Count)
+            {
+                EventoFinPartida(this, EventArgs.Empty);
+            }
+        }
     }
 }
