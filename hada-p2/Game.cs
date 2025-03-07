@@ -59,6 +59,7 @@ namespace Hada
                     }
 
                 } while (!acaba && !res);
+                
                 if (!acaba)
                 {
                     t.Disparar(new Coordenada(c[0] - '0', c[2] - '0'));
@@ -75,7 +76,7 @@ namespace Hada
             //{
               //  Console.WriteLine("PARTIDA FINALIZADA");
             //}
-        }
+        //}
         private void cuandoEventoFinPartida(object obj, EventArgs e)
         {
             finPartida = false;
