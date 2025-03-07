@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\usuario\\source\\repos\\hada-p2\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A21150E6-7552-45B7-9B61-2C1AE8D0257C}|hada-p2\\hada-p2.csproj|c:\\users\\usuario\\source\\repos\\hada-p2\\hada-p2\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A21150E6-7552-45B7-9B61-2C1AE8D0257C}|hada-p2\\hada-p2.csproj|solutionrelative:hada-p2\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A21150E6-7552-45B7-9B61-2C1AE8D0257C}|hada-p2\\hada-p2.csproj|c:\\users\\usuario\\source\\repos\\hada-p2\\hada-p2\\tablero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A21150E6-7552-45B7-9B61-2C1AE8D0257C}|hada-p2\\hada-p2.csproj|solutionrelative:hada-p2\\tablero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A21150E6-7552-45B7-9B61-2C1AE8D0257C}|hada-p2\\hada-p2.csproj|c:\\users\\usuario\\source\\repos\\hada-p2\\hada-p2\\barco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A21150E6-7552-45B7-9B61-2C1AE8D0257C}|hada-p2\\hada-p2.csproj|solutionrelative:hada-p2\\barco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A21150E6-7552-45B7-9B61-2C1AE8D0257C}|hada-p2\\hada-p2.csproj|c:\\users\\usuario\\source\\repos\\hada-p2\\hada-p2\\eventos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A21150E6-7552-45B7-9B61-2C1AE8D0257C}|hada-p2\\hada-p2.csproj|solutionrelative:hada-p2\\eventos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A21150E6-7552-45B7-9B61-2C1AE8D0257C}|hada-p2\\hada-p2.csproj|c:\\users\\usuario\\source\\repos\\hada-p2\\hada-p2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -13,18 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A21150E6-7552-45B7-9B61-2C1AE8D0257C}|hada-p2\\hada-p2.csproj|c:\\users\\usuario\\source\\repos\\hada-p2\\hada-p2\\coordenada.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A21150E6-7552-45B7-9B61-2C1AE8D0257C}|hada-p2\\hada-p2.csproj|solutionrelative:hada-p2\\coordenada.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A21150E6-7552-45B7-9B61-2C1AE8D0257C}|hada-p2\\hada-p2.csproj|c:\\users\\usuario\\source\\repos\\hada-p2\\hada-p2\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A21150E6-7552-45B7-9B61-2C1AE8D0257C}|hada-p2\\hada-p2.csproj|solutionrelative:hada-p2\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A21150E6-7552-45B7-9B61-2C1AE8D0257C}|hada-p2\\hada-p2.csproj|c:\\users\\usuario\\source\\repos\\hada-p2\\hada-p2\\eventos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A21150E6-7552-45B7-9B61-2C1AE8D0257C}|hada-p2\\hada-p2.csproj|solutionrelative:hada-p2\\eventos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A21150E6-7552-45B7-9B61-2C1AE8D0257C}|hada-p2\\hada-p2.csproj|c:\\users\\usuario\\source\\repos\\hada-p2\\hada-p2\\barco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A21150E6-7552-45B7-9B61-2C1AE8D0257C}|hada-p2\\hada-p2.csproj|solutionrelative:hada-p2\\barco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,28 +34,42 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Game.cs",
+              "DocumentMoniker": "C:\\Users\\usuario\\source\\repos\\hada-p2\\hada-p2\\Game.cs",
+              "RelativeDocumentMoniker": "hada-p2\\Game.cs",
+              "ToolTip": "C:\\Users\\usuario\\source\\repos\\hada-p2\\hada-p2\\Game.cs",
+              "RelativeToolTip": "hada-p2\\Game.cs",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAYwIgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-07T13:04:54.685Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Tablero.cs",
               "DocumentMoniker": "C:\\Users\\usuario\\source\\repos\\hada-p2\\hada-p2\\Tablero.cs",
               "RelativeDocumentMoniker": "hada-p2\\Tablero.cs",
               "ToolTip": "C:\\Users\\usuario\\source\\repos\\hada-p2\\hada-p2\\Tablero.cs",
               "RelativeToolTip": "hada-p2\\Tablero.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABwAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-07T13:05:01.044Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\usuario\\source\\repos\\hada-p2\\hada-p2\\Program.cs",
               "RelativeDocumentMoniker": "hada-p2\\Program.cs",
@@ -69,51 +83,38 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Game.cs",
-              "DocumentMoniker": "C:\\Users\\usuario\\source\\repos\\hada-p2\\hada-p2\\Game.cs",
-              "RelativeDocumentMoniker": "hada-p2\\Game.cs",
-              "ToolTip": "C:\\Users\\usuario\\source\\repos\\hada-p2\\hada-p2\\Game.cs",
-              "RelativeToolTip": "hada-p2\\Game.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T13:04:54.685Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "Eventos.cs",
               "DocumentMoniker": "C:\\Users\\usuario\\source\\repos\\hada-p2\\hada-p2\\Eventos.cs",
               "RelativeDocumentMoniker": "hada-p2\\Eventos.cs",
               "ToolTip": "C:\\Users\\usuario\\source\\repos\\hada-p2\\hada-p2\\Eventos.cs",
               "RelativeToolTip": "hada-p2\\Eventos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-07T13:04:53.552Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Coordenada.cs",
               "DocumentMoniker": "C:\\Users\\usuario\\source\\repos\\hada-p2\\hada-p2\\Coordenada.cs",
               "RelativeDocumentMoniker": "hada-p2\\Coordenada.cs",
               "ToolTip": "C:\\Users\\usuario\\source\\repos\\hada-p2\\hada-p2\\Coordenada.cs",
               "RelativeToolTip": "hada-p2\\Coordenada.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAwwF8AAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-07T13:04:52.508Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "Barco.cs",
               "DocumentMoniker": "C:\\Users\\usuario\\source\\repos\\hada-p2\\hada-p2\\Barco.cs",
               "RelativeDocumentMoniker": "hada-p2\\Barco.cs",
               "ToolTip": "C:\\Users\\usuario\\source\\repos\\hada-p2\\hada-p2\\Barco.cs",
               "RelativeToolTip": "hada-p2\\Barco.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-07T13:04:51.429Z",
               "EditorCaption": ""
