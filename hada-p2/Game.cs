@@ -28,31 +28,43 @@ namespace Hada
                 barcos.Add(new Barco("MAYA", 5, 'h', new Coordenada(6, 3)));
                 Tablero t = new Tablero(8, barcos);
                 t.EventoFinPartida += cuandoEventoFinPartida;
-                char res;
                 string c = "";
 
             bool acaba = false;
-            while (!acaba)
+            bool res = false;
+            do
             {
                 do
                 {
                     Console.WriteLine("Introduzca una coordenada (formato fila, columna). Introduzca 'S' para salir.");
                     c = Console.ReadLine();
-                    if (c == "S")
+                    
+
+                    if (c.Contains(',') && c.Length == 3 && c[0] - '0' >= 0 && c[0] - '0' < t.TamTablero && c[2] - '0' >= 0 && c[2] - '0' < t.TamTablero)
                     {
-                        acaba = true;
-                        
+                        res = true;
                     }
-                   
+                    else
+                    {
+                        if (c == "S")
+                        {
+                            acaba = true;
+                        }
+                        else
+                        {
+                            res = false;
+                            Console.WriteLine("Formato incrorrecto. Introduzca x,y (sustituyendo los valores)");
+                        }
 
+                    }
 
-                } while (!acaba && c.Contains(',') && c.Length != 3 && c[0] - '0' >= 0 && c[0] - '0' <= 8 && c[2] - '0' >= 0 && c[2] - '0' <= 8);
+                } while (!acaba && !res);
                 if (!acaba)
                 {
                     t.Disparar(new Coordenada(c[0] - '0', c[2] - '0'));
                 }
-                t.DibujarTablero();
-            }
+                Console.WriteLine(t.ToString());
+            } while (!acaba);
             Console.WriteLine("FIN DE LA PARTIDA");
 
 
