@@ -154,8 +154,14 @@ namespace Hada
         
         public override string ToString()
         {
-            string resultado = "Barco: " + Nombre + " - Daños: " + NumDanyos + " - Estado:";
-            resultado += Hundido() ? "HUNDIDO\n" : "A FLOTE\n";
+            string resultado = "[" + Nombre + "] - DAÑOS: [" + NumDanyos + "] - HUNDIDO: [";
+            resultado += Hundido() ? "True]" : "False]";
+            resultado += " - COORDENADAS: ";
+            
+            foreach(var Coor in CoordenadasBarco)
+            {
+                resultado += $"[{Coor.Key}:{Coor.Value}]"; 
+            }
             return resultado;
         }
     }
