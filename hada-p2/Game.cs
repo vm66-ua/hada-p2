@@ -20,8 +20,6 @@ namespace Hada
         
         private void gameLoop()
         {
-            //try
-            //{
                 List<Barco> barcos = new List<Barco>();
                 barcos.Add(new Barco("THOR", 1, 'h', new Coordenada(0, 0)));
                 barcos.Add(new Barco("LOKI", 2, 'v', new Coordenada(1, 2)));
@@ -64,6 +62,10 @@ namespace Hada
                 {
                     t.Disparar(new Coordenada(c[0] - '0', c[2] - '0'));
                 }
+                if (finPartida)
+                {
+                    acaba = true;
+                }
                 Console.WriteLine(t.ToString());
             } while (!acaba);
             Console.WriteLine("FIN DE LA PARTIDA");
@@ -72,14 +74,9 @@ namespace Hada
 
             }
 
-            //catch
-            //{
-              //  Console.WriteLine("PARTIDA FINALIZADA");
-            //}
-        //}
         private void cuandoEventoFinPartida(object obj, EventArgs e)
         {
-            finPartida = false;
+            finPartida = true;
         }
     }
     
