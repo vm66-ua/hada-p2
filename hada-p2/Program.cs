@@ -1,4 +1,6 @@
-﻿using Hada;
+﻿//JORGE GARCÍA HERNÁNDEZ
+//VLADA MUKHAREVA
+using Hada;
 using System;
 using System.Collections.Generic;
 using System.Linq;

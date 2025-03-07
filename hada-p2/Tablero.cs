@@ -1,4 +1,6 @@
-﻿using Hada;
+﻿//JORGE GARCÍA HERNÁNDEZ
+//VLADA MUKHAREVA
+using Hada;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +20,6 @@ namespace Hada
                 if (value < 4 || value > 9)
                 {
                     throw new ArgumentOutOfRangeException($"The size of the board must be between 4 and 9.");
-                    // no cumple las necesidades de tamaño por lo que se pone en el tam máximo
                 }
                 _tamTablero = value;
             }
@@ -28,8 +29,6 @@ namespace Hada
         private List<Barco> barcos;
         private List<Barco> barcosEliminados;
         private Dictionary<Coordenada, string> casillasTablero;
-        //public event EventHandler<TocadoArgs> EventoTocado;
-        //public event EventHandler<HundidoArgs> EventoHundido;
         public event EventHandler<EventArgs> EventoFinPartida;
 
         public Tablero(int tamTablero, List<Barco> barcos)
@@ -87,39 +86,11 @@ namespace Hada
 
                 if (!ya)
                 {
-                    //bool encontrado = false;
                     for (int bar = 0; bar < barcos.Count; bar++)
                     {
-                        /* int tam = barcos[bar].longitud;
-                         Posicion p = barcos[bar].posicion;
-                         int n = 0;
-                         int filas = 0;
-                         int columnas = 0;
-                         while (n < tam)
-                         {
-
-                             if (barcos[bar].fila + filas == c.fila && barcos[bar].columna + columnas == c.columna)
-                             {
-                                 encontrado = true;
-                                 coordenadasTocadas.Add(c);
-                                 //llamar al evento tocado !! y que llame a hundido !!
-
-                             }
-                             if (barcos[i].orientacion = 'h')
-                             {
-                                 columnas++;
-                             }
-                             else
-                             {
-                                 filas += TamTablero;
-                             }
-
-                             tam--;
-                         }*/
                         barcos[bar].Disparo(c);
                     }
                 }
-                //añadir al vector de disparos
                 coordenadasDisparadas.Add(c);
 
             }
