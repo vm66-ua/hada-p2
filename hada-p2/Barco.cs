@@ -82,7 +82,7 @@ namespace Hada
 
             if(encontrado == -1)
             {
-                Console.WriteLine("El disparo en " + c.ToString() + " no impactó en ningún barco. ");
+                //Console.WriteLine("El disparo en " + c.ToString() + " no impactó en ningún barco. ");
                 return;
             }
 
