@@ -23,10 +23,10 @@ namespace Hada
             //try
             //{
                 List<Barco> barcos = new List<Barco>();
-                barcos.Add(new Barco("THOR", 3, 'h', new Coordenada(0, 0)));
-                barcos.Add(new Barco("LOKI", 4, 'v', new Coordenada(2, 3)));
-                barcos.Add(new Barco("MAYA", 5, 'h', new Coordenada(6, 3)));
-                Tablero t = new Tablero(8, barcos);
+                barcos.Add(new Barco("THOR", 1, 'h', new Coordenada(0, 0)));
+                barcos.Add(new Barco("LOKI", 2, 'v', new Coordenada(1, 2)));
+                barcos.Add(new Barco("MAYA", 3, 'h', new Coordenada(3, 1)));
+                Tablero t = new Tablero(4, barcos);
                 t.EventoFinPartida += cuandoEventoFinPartida;
                 string c = "";
 
@@ -36,7 +36,7 @@ namespace Hada
             {
                 do
                 {
-                    Console.WriteLine("Introduzca una coordenada (formato fila, columna). Introduzca 'S' para salir.");
+                    Console.WriteLine("Introduce la coordenada a la que disparar FILA,COLUMNA ('S' para salir):");
                     c = Console.ReadLine();
                     
 
@@ -53,7 +53,7 @@ namespace Hada
                         else
                         {
                             res = false;
-                            Console.WriteLine("Formato incrorrecto. Introduzca x,y (sustituyendo los valores)");
+                            Console.WriteLine("Formato incrorrecto. Introduzca FILA,COLUMNA (sustituyendo los valores)");
                         }
 
                     }
@@ -69,12 +69,12 @@ namespace Hada
 
 
 
-            //}
+            }
 
-            /*catch
-            {
-                Console.WriteLine("PARTIDA FINALIZADA");
-            }*/
+            //catch
+            //{
+              //  Console.WriteLine("PARTIDA FINALIZADA");
+            //}
         }
         private void cuandoEventoFinPartida(object obj, EventArgs e)
         {

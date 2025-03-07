@@ -171,6 +171,7 @@ namespace Hada
             coordenadasTocadas.Add(e.CoordenadaImpacto);
             Console.WriteLine($"TABLERO: Barco [" + e.Nombre + "] tocado en Coordenada: [" + e.CoordenadaImpacto + "]");
             casillasTablero[e.CoordenadaImpacto] = $"{e.Nombre}_T";
+            
         }
 
         private void cuandoEventoHundido(object bar, HundidoArgs e)
