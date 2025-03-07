@@ -160,7 +160,7 @@ namespace Hada
             
             foreach(var Coor in CoordenadasBarco)
             {
-                resultado += $"[{Coor.Key}:{Coor.Value}]"; 
+                resultado += $"[{Coor.Key}:{Coor.Value}] "; 
             }
             return resultado;
         }
